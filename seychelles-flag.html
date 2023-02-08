@@ -70,10 +70,24 @@
         var flagGeom = flagGeometry();
 
         // set the color for specific triangle faces
+        var materials = [
+            new THREE.MeshBasicMaterial({color: new THREE.Color("blue"), side: THREE.DoubleSide}),
+            new THREE.MeshBasicMaterial({color: new THREE.Color("yellow"), side: THREE.DoubleSide}),
+            new THREE.MeshBasicMaterial({color: new THREE.Color("red"), side: THREE.DoubleSide}),
+            new THREE.MeshBasicMaterial({color: new THREE.Color("white"), side: THREE.DoubleSide}),
+            new THREE.MeshBasicMaterial({color: new THREE.Color("green"), side: THREE.DoubleSide})
+        ]
+
+        flagGeom.faces[0].materialIndex = 0;
+        flagGeom.faces[1].materialIndex = 1;
+        flagGeom.faces[2].materialIndex = 2;
+        flagGeom.faces[3].materialIndex = 2;
+        flagGeom.faces[4].materialIndex = 3;
+        flagGeom.faces[5].materialIndex = 4;
 
 
         // create a mesh for the flag
-        var flagMesh = new THREE.Mesh(flagGeom, flagMaterial);
+        var flagMesh = new THREE.Mesh(flagGeom, materials);
 
         // add flag mesh to the scene
         scene.add(flagMesh);
