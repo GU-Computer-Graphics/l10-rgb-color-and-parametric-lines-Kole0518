@@ -55,6 +55,10 @@
             geom.faces.push(new THREE.Face3(2, 3, 4));
             geom.faces.push(new THREE.Face3(3, 0, 4));
 
+            var steepleMaterials = [
+                new THREE.MeshBasicMaterial({color: new THREE.Color("yellow")})
+            ]
+
             // calculate the normals for shading
             geom.computeFaceNormals();
             // geom.computeVertexNormals(true);
@@ -78,9 +82,31 @@
         var barnGeom = TW.createBarn(barnWidth, barnHeight, barnDepth);
         var steepleGeom = createSteeple(steepleWidth, steepleHeight);
 
+        // colors
+        var steepleColor = new THREE.MeshBasicMaterial({color: new THREE.Color("yellow")});
+        
+        var barnMaterials = [
+            new THREE.MeshBasicMaterial({color: new THREE.Color("white")}),
+            new THREE.MeshBasicMaterial({color: new THREE.Color("red")})
+        ];
+
+        barnGeom.faces[0].materialIndex = 0;
+        barnGeom.faces[1].materialIndex = 0;
+        barnGeom.faces[2].materialIndex = 0;
+        barnGeom.faces[3].materialIndex = 0;
+        barnGeom.faces[4].materialIndex = 0;
+        barnGeom.faces[5].materialIndex = 0;
+
+        barnGeom.faces[6].materialIndex = 1;
+        barnGeom.faces[7].materialIndex = 1;
+        barnGeom.faces[8].materialIndex = 1;
+        barnGeom.faces[9].materialIndex = 1;
+
+
+
         // create the barn and steeple meshes
-        var barnMesh = TW.createMesh(barnGeom);
-        var steepleMesh = TW.createMesh(steepleGeom);
+        var barnMesh = new THREE.Mesh(barnGeom, barnMaterials);
+        var steepleMesh = new THREE.Mesh(steepleGeom, steepleColor);
 
         // replace the above two code statements with code to do the following:
 
